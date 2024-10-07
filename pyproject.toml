@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aicodeprep"
+version = "0.1.0"
+description = "Prepare code for AI chatbot assistance"
+readme = "README.md"
+authors = [{ name = "Tom Brothers", email = "wuu73@yahoo.com" }]
+license = { file = "LICENSE" }
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+keywords = ["ai", "code", "preparation", "chatbot"]
+dependencies = [
+    "pyperclip",
+    "pyyaml",
+]
+requires-python = ">=3.6"
+
+[project.scripts]
+aicodeprep = "aicodeprep.main:main"
+
+[project.urls]
+Homepage = "https://github.com/detroittommy879/aicodeprep"
