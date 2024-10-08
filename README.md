@@ -20,6 +20,9 @@ aicodeprep
 
 This will create a file named `fullcode.txt` in the current directory and copy its contents to your clipboard.
 
+![example.png](./example.png)
+
+
 ### Options
 
 - `-n, --no-copy`: Do NOT copy output to clipboard (default behavior is to copy)
