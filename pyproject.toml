@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "aicodeprep"
-version = "0.1.0"
+version = "0.1.1"
 description = "Prepare code for AI chatbot assistance"
 readme = "README.md"
 authors = [{ name = "Tom Brothers", email = "wuu73@yahoo.com" }]
