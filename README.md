@@ -1,16 +1,38 @@
 # aicodeprep (AI Code Prep)
 
-aicodeprep is a command-line tool designed to simplify the process of sharing your project's code with AI chatbots. It recursively scans your project directory, concatenates all code files into a single text file, and copies the content to your clipboard for easy pasting.
+aicodeprep is a command-line tool designed to simplify the process of sharing your project's code with AI chatbots. It recursively scans your project directory, concatenates all code files into a single text file, and copies the content to your clipboard for easy pasting into a LLM chat.
 
 ## Purpose
 
 The primary purpose of aicodeprep is to save time when you need to ask AI chatbots questions about your development project. Instead of manually copying and pasting multiple files, aicodeprep automates the process of gathering all your project's code into a single, easily shareable format.
 
-## Installation
+## Windows Installation
 
 You can install aicodeprep directly from PyPI:
 
 pip install aicodeprep
+
+## Linux Installation (Debian / Ubuntu / Mint)
+
+pip install --user aicodeprep
+
+sudo apt-get install xclip
+
+echo 'export PATH="$PATH:$HOME/.local/bin"' >> ~/.bashrc
+
+source ~/.bashrc
+
+## Linux Installation (Fedora)
+
+pip install --user aicodeprep
+
+sudo dnf install xclip
+
+echo 'export PATH="$PATH:$HOME/.local/bin"' >> ~/.bashrc
+
+source ~/.bashrc
+
+***xclip is needed in Linux for the clipboard functionality***
 
 ## Usage
 
