@@ -1,0 +1,115 @@
+code_extensions:
+  - .py
+  - .js
+  - .jsx
+  - .ts
+  - .tsx
+  - .java
+  - .cpp
+  - .c
+  - .h
+  - .cs
+  - .php
+  - .rb
+  - .go
+  - .rs
+  - .swift
+  - .kt
+  - .scala
+  - .html
+  - .css
+  - .scss
+  - .sass
+  - .less
+  - .sql
+  - .sh
+  - .yaml
+  - .yml
+  - .json
+  - .xml
+  - .vue
+  - .r
+  - .m
+  - .f90
+  - .f95
+  - .f03
+  - .f08
+  - .gradle
+  - .groovy
+  - .ps1
+  - .psm1
+  - .ipynb
+  - .md
+  - .txt
+  - .lock
+  - .toml
+  - .ini
+  - .conf
+  - .cfg
+  - .properties
+
+exclude_extensions:
+  - .txt
+  - .log
+  - .temp
+
+include_files:
+  - README.md
+  - CONTRIBUTING.md
+  - important.txt   # Even if .txt is excluded, this specific file will be included
+
+include_dirs:
+  - important_docs  # Specifically include this directory even if parent is excluded
+
+exclude_dirs:
+  - .git
+  - node_modules
+  - venv
+  - __pycache__
+  - build
+  - dist
+  - .idea
+  - Lib
+  - site-packages
+  - .venv
+  - .vscode
+  - .github
+  - docs
+  - tests
+  - spec
+  - fixtures
+  - migrations
+  - logs
+  - tmp
+  - cache
+  - assets
+  - public
+  - static
+  - uploads
+  - vendor
+  - bin
+  - obj
+  - out
+  - target
+  - coverage
+  - reports
+
+exclude_files:
+  - package-lock.json
+  - yarn.lock
+  - requirements.txt
+  - Gemfile.lock
+  - composer.lock
+  - .DS_Store
+  - Thumbs.db
+
+exclude_patterns:
+  - min.js
+  - min.css
+  - bundle.js
+  - chunk.js
+  - test.js
+  - spec.js
+  - generated.ts
+
+max_file_size: 1000000  # 1MB default

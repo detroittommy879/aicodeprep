@@ -60,7 +60,6 @@ This will create `my_project_code.txt` without copying to clipboard.
 
 You can customize aicodeprep's behavior by creating a `aicodeprep_config.yaml` file in your project directory. Here's an example:
 
-```yaml
 code_extensions:
   - .py
   - .js

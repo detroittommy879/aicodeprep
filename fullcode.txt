@@ -1,3 +1,396 @@
+CHANGELOG.md:
+<code>
+# Changelog
+
+## [0.2.0] - 2024-02-11 (Nov 2nd 2024)
+
+### Moved all hard coded options to the default_config.yaml file
+
+### Added
+- New `exclude_extensions` configuration option to exclude file types globally
+- New `exclude_extensions` configuration option to exclude patterns like .min.js
+- New `include_dirs` configuration option to explicitly include specific directories
+- Enhanced priority system for file inclusion/exclusion rules
+- Better support for user configuration overrides
+- Updated and added some more exclusions that came up later when it would add unnecessary files
+
+### Changed
+- Improved file processing logic with clearer priority rules:
+  1. Explicitly included files (highest priority)
+  2. Explicitly excluded files
+  3. Excluded extensions
+  4. Code extensions (lowest priority)
+- Enhanced directory processing logic:
+  1. Explicitly included directories (highest priority)
+  2. Explicitly excluded directories
+  3. Normal directory processing
+
+### Coming soon, GUI menu so you can right click right in a folder and run it from there and also add/remove files/folders which will be automatically pre-checked and displayed for speed
+
+</code>
+
+default_config.yaml:
+<code>
+code_extensions:
+  - .py
+  - .js
+  - .jsx
+  - .ts
+  - .tsx
+  - .java
+  - .cpp
+  - .c
+  - .h
+  - .cs
+  - .php
+  - .rb
+  - .go
+  - .rs
+  - .swift
+  - .kt
+  - .scala
+  - .html
+  - .css
+  - .scss
+  - .sass
+  - .less
+  - .sql
+  - .sh
+  - .yaml
+  - .yml
+  - .json
+  - .xml
+  - .vue
+  - .r
+  - .m
+  - .f90
+  - .f95
+  - .f03
+  - .f08
+  - .gradle
+  - .groovy
+  - .ps1
+  - .psm1
+  - .ipynb
+  - .md
+  - .txt
+  - .lock
+  - .toml
+  - .ini
+  - .conf
+  - .cfg
+  - .properties
+
+exclude_extensions:
+  - .txt
+  - .log
+  - .temp
+
+include_files:
+  - README.md
+  - CONTRIBUTING.md
+  - important.txt   # Even if .txt is excluded, this specific file will be included
+
+include_dirs:
+  - important_docs  # Specifically include this directory even if parent is excluded
+
+exclude_dirs:
+  - .git
+  - node_modules
+  - venv
+  - __pycache__
+  - build
+  - dist
+  - .idea
+  - Lib
+  - site-packages
+  - .venv
+  - .vscode
+  - .github
+  - docs
+  - tests
+  - spec
+  - fixtures
+  - migrations
+  - logs
+  - tmp
+  - cache
+  - assets
+  - public
+  - static
+  - uploads
+  - vendor
+  - bin
+  - obj
+  - out
+  - target
+  - coverage
+  - reports
+
+exclude_files:
+  - package-lock.json
+  - yarn.lock
+  - requirements.txt
+  - Gemfile.lock
+  - composer.lock
+  - .DS_Store
+  - Thumbs.db
+
+exclude_patterns:
+  - min.js
+  - min.css
+  - bundle.js
+  - chunk.js
+  - test.js
+  - spec.js
+  - generated.ts
+
+max_file_size: 1000000  # 1MB default
+
+</code>
+
+pyproject.toml:
+<code>
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aicodeprep"
+version = "0.2.1"
+description = "Prepare code for AI chatbot assistance"
+readme = "README.md"
+authors = [{ name = "Tom Brothers", email = "wuu73@yahoo.com" }]
+license = { file = "LICENSE" }
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+keywords = ["ai", "code", "preparation", "chatbot"]
+dependencies = [
+    "pyperclip",
+    "pyyaml",
+]
+requires-python = ">=3.6"
+
+[project.scripts]
+aicodeprep = "aicodeprep.main:main"
+
+[project.urls]
+Homepage = "https://github.com/detroittommy879/aicodeprep"
+
+[tool.setuptools.package-data]
+aicodeprep = ["default_config.yaml"]
+
+</code>
+
+README.md:
+<code>
+# aicodeprep (AI Code Prep)
+
+aicodeprep is a command-line tool designed to simplify the process of sharing your project's code with AI chatbots. It recursively scans your project directory, concatenates all code files into a single text file, and copies the content to your clipboard for easy pasting into a LLM chat.
+
+## Purpose
+
+The primary purpose of aicodeprep is to save time when you need to ask AI chatbots questions about your development project. Instead of manually copying and pasting multiple files, aicodeprep automates the process of gathering all your project's code into a single, easily shareable format.
+
+## Windows Installation
+
+You can install aicodeprep directly from PyPI:
+
+pip install aicodeprep
+
+## Linux Installation (Debian / Ubuntu / Mint)
+
+pip install --user aicodeprep
+
+sudo apt-get install xclip
+
+echo 'export PATH="$PATH:$HOME/.local/bin"' >> ~/.bashrc
+
+source ~/.bashrc
+
+## Linux Installation (Fedora)
+
+pip install --user aicodeprep
+
+sudo dnf install xclip
+
+echo 'export PATH="$PATH:$HOME/.local/bin"' >> ~/.bashrc
+
+source ~/.bashrc
+
+***xclip is needed in Linux for the clipboard functionality***
+
+## Usage
+
+After installation, you can run aicodeprep from any directory containing your project files and folders:
+
+aicodeprep
+
+This will create a file named `fullcode.txt` in the current directory and copy its contents to your clipboard.
+
+![example.png](./example.png)
+
+
+### Options
+
+- `-n, --no-copy`: Do NOT copy output to clipboard (default behavior is to copy)
+- `-o FILENAME, --output FILENAME`: Specify the output file name (default: fullcode.txt)
+
+Example:
+
+aicodeprep -n -o my_project_code.txt
+
+This will create `my_project_code.txt` without copying to clipboard.
+
+## Configuration
+
+You can customize aicodeprep's behavior by creating a `aicodeprep_config.yaml` file in your project directory. Here's an example:
+
+code_extensions:
+  - .py
+  - .js
+  - .html
+exclude_dirs:
+  - node_modules
+  - venv
+max_file_size: 500000  # in bytes
+
+Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+License
+
+This project is licensed under the MIT License.
+
+
+</code>
+
+aicodeprep\default_config.yaml:
+<code>
+code_extensions:
+  - .py
+  - .js
+  - .jsx
+  - .ts
+  - .tsx
+  - .java
+  - .cpp
+  - .c
+  - .h
+  - .cs
+  - .php
+  - .rb
+  - .go
+  - .rs
+  - .swift
+  - .kt
+  - .scala
+  - .html
+  - .css
+  - .scss
+  - .sass
+  - .less
+  - .sql
+  - .sh
+  - .yaml
+  - .yml
+  - .json
+  - .xml
+  - .vue
+  - .r
+  - .m
+  - .f90
+  - .f95
+  - .f03
+  - .f08
+  - .gradle
+  - .groovy
+  - .ps1
+  - .psm1
+  - .ipynb
+  - .md
+  - .txt
+  - .lock
+  - .toml
+  - .ini
+  - .conf
+  - .cfg
+  - .properties
+
+exclude_extensions:
+  - .txt
+  - .log
+  - .temp
+
+include_files:
+  - README.md
+  - CONTRIBUTING.md
+  - important.txt   # Even if .txt is excluded, this specific file will be included
+
+include_dirs:
+  - important_docs  # Specifically include this directory even if parent is excluded
+
+exclude_dirs:
+  - .git
+  - node_modules
+  - venv
+  - __pycache__
+  - build
+  - dist
+  - .idea
+  - Lib
+  - site-packages
+  - .venv
+  - .vscode
+  - .github
+  - docs
+  - tests
+  - spec
+  - fixtures
+  - migrations
+  - logs
+  - tmp
+  - cache
+  - assets
+  - public
+  - static
+  - uploads
+  - vendor
+  - bin
+  - obj
+  - out
+  - target
+  - coverage
+  - reports
+
+exclude_files:
+  - package-lock.json
+  - yarn.lock
+  - requirements.txt
+  - Gemfile.lock
+  - composer.lock
+  - .DS_Store
+  - Thumbs.db
+
+exclude_patterns:
+  - min.js
+  - min.css
+  - bundle.js
+  - chunk.js
+  - test.js
+  - spec.js
+  - generated.ts
+
+max_file_size: 1000000  # 1MB default
+
+</code>
+
+aicodeprep\main.py:
+<code>
 import os
 import pathlib
 import argparse
@@ -221,3 +614,11 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+</code>
+
+aicodeprep\__init__.py:
+<code>
+from .main import main
+</code>
+
