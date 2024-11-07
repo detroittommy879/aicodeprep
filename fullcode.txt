@@ -221,7 +221,7 @@ echo 'export PATH="$PATH:$HOME/.local/bin"' >> ~/.bashrc
 
 source ~/.bashrc
 
-***xclip is needed in Linux for the clipboard functionality***
+**_xclip is needed in Linux for the clipboard functionality_**
 
 ## Usage
 
@@ -232,7 +232,6 @@ aicodeprep
 This will create a file named `fullcode.txt` in the current directory and copy its contents to your clipboard.
 
 ![example.png](./example.png)
-
 
 ### Options
 
@@ -250,22 +249,35 @@ This will create `my_project_code.txt` without copying to clipboard.
 You can customize aicodeprep's behavior by creating a `aicodeprep_config.yaml` file in your project directory. Here's an example:
 
 code_extensions:
-  - .py
-  - .js
-  - .html
-exclude_dirs:
-  - node_modules
-  - venv
-max_file_size: 500000  # in bytes
 
-Contributing
+- .py
+- .js
+- .html
+  exclude_dirs:
+- node_modules
+- venv
+  max_file_size: 500000 # in bytes
 
 Contributions are welcome! Please feel free to submit a Pull Request.
+https://github.com/detroittommy879
+
+Donations/Tip welcome! It helps motivate me to try and make cooler tools!
+
+https://wuu73.org/hello.html
+
+Tips: https://ko-fi.com/detroittommy879
+
+Bitcoin: bc1qkuwhujaxhzk7e3g4f3vekpzjad2rwlh9usagy6
+
+Litecoin: ltc1q3z327a3ea22mlhtawmdjxmwn69n65a32fek2s4
+
+Monero: 46FzbFckBy9bbExzwAifMPBheYFb37k8ghGWSHqc6wE1BiEz6rQc2f665JmqUdtv1baRmuUEcDoJ2dpqY6Msa3uCKArszQZ
+
+Cashapp: $lightweb73
 
 License
 
 This project is licensed under the MIT License.
-
 
 </code>
 
@@ -610,6 +622,10 @@ def main():
             logging.info("Code copied to clipboard!")
         except Exception as e:
             logging.error(f"Error copying to clipboard: {str(e)}")
+
+    # Add final comments here
+    logging.info("Buy my cat a treat, comments, ideas for improvement appreciated: ")
+    logging.info("https://wuu73.org/hello.html")
 
 
 if __name__ == "__main__":

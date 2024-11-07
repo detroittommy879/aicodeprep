@@ -218,6 +218,10 @@ def main():
         except Exception as e:
             logging.error(f"Error copying to clipboard: {str(e)}")
 
+    # Add final comments here
+    logging.info("Buy my cat a treat, comments, ideas for improvement appreciated: ")
+    logging.info("https://wuu73.org/hello.html")
+
 
 if __name__ == "__main__":
     main()

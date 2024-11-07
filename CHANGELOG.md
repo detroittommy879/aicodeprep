@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.2.2] - 2024-07-11 (Nov 2nd 2024)
+
+Minor tweaks
+
 ## [0.2.0] - 2024-02-11 (Nov 2nd 2024)
 
 ### Moved all hard coded options to the default_config.yaml file
