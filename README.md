@@ -1,4 +1,10 @@
-# aicodeprep (AI Code Prep)
+# aicodeprep-GUI version here: https://wuu73.org/aicp/
+
+GUI version for Windows only currently. Run installer to install the right click menu/app.
+
+![s2.png](./s2.png)
+
+# aicodeprep (AI Code Prep free / open source command line version)
 
 aicodeprep is a command-line tool designed to simplify the process of sharing your project's code with AI chatbots. It recursively scans your project directory, concatenates all code files into a single text file, and copies the content to your clipboard for easy pasting into a LLM chat.
 
