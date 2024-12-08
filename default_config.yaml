@@ -47,15 +47,14 @@ code_extensions:
   - .conf
   - .cfg
   - .properties
+  - .rst
 
 exclude_extensions:
-  - .txt
+  - .env
   - .log
   - .temp
 
 include_files:
-  - README.md
-  - CONTRIBUTING.md
   - important.txt   # Even if .txt is excluded, this specific file will be included
 
 include_dirs:
@@ -74,25 +73,14 @@ exclude_dirs:
   - .venv
   - .vscode
   - .github
-  - docs
-  - tests
-  - spec
   - fixtures
-  - migrations
   - logs
   - tmp
   - cache
-  - assets
-  - public
-  - static
   - uploads
   - vendor
   - bin
   - obj
-  - out
-  - target
-  - coverage
-  - reports
 
 exclude_files:
   - package-lock.json
@@ -112,4 +100,4 @@ exclude_patterns:
   - spec.js
   - generated.ts
 
-max_file_size: 1000000  # 1MB default
+max_file_size: 10000000  # 10MB default
