@@ -1,6 +1,8 @@
 # aicodeprep-GUI version here: https://wuu73.org/aicp/
 
-GUI version for Windows only currently. Run installer to install the right click menu/app.
+GUI version for Windows and Mac, installers are available on the other repository called aicodeprep-gui-c. Run installer to install the right click menu/app.
+
+Compiled Mac version only tested on my M1 Macbook, will work on getting it to work uncompiled (i am still learning how Mac OS does things).
 
 ![s2.png](./s2.png)
 
